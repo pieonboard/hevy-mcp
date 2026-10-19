@@ -1,0 +1,15 @@
+{
+  "format_version": 1,
+  "version": "hevy-catalog-2026-09-09",
+  "checksum": "1f5eff848bb1b253dc84c8bac3d79e9f0c87f5d9306487c89dd8c66e8c4763d3",
+  "source_url": "https://hevy.com/_next/static/chunks/pages/_app-5fa98d71810f0958.js",
+  "captured_at": "2026-09-09T10:37:42.237244+00:00",
+  "acquired_at": "2026-10-17T06:51:54.569855+00:00",
+  "source_count": 451,
+  "source_document": "hevy_exercise_catalog.json",
+  "source_document_checksum": "4edbe47ef6b3caa223c53059353c694d0fe01ecdd7ba1e4d509b9002362b72d8",
+  "source_bundle_checksum": null,
+  "parser": "hevy-unofficial==0.0.2a0/ExerciseCatalogStore",
+  "acquisition": "store_export",
+  "attribution": "Hevy exercise definitions and media references; see ATTRIBUTION.md. No media files bundled."
+}

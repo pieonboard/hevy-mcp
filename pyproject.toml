@@ -1,0 +1,70 @@
+[project]
+name = "hevy-mcp"
+version = "0.1.0"
+description = "Unofficial Hevy MCP server"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = [
+  "fastmcp==4.1.0",
+  "mcp==2.3.0",
+  "hevy-unofficial[browser]==0.0.2a0",
+  "httpx==0.28.1",
+  "pydantic==2.13.5",
+  "typer==0.17.4",
+  "click==8.3.3",
+  "pyyaml==6.0.2",
+]
+
+[project.scripts]
+hevy-mcp = "hevy_mcp.cli:app"
+
+[build-system]
+requires = ["hatchling==1.32.4"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+  "pytest==9.1.1",
+  "pytest-asyncio==1.4.0",
+  "pytest-socket==0.8.1",
+  "respx==0.23.1",
+  "ruff==0.17.1",
+  "mypy==2.4.0",
+  "types-pyyaml==6.0.12.20260906",
+  "build==1.6.1",
+  "jsonschema==4.26.0",
+]
+
+[tool.hatch.build]
+exclude = ["**/.refs/**", "**/.venv/**", "**/__pycache__/**", "**/.env*", "**/credentials*", "**/token*", "**/deleted-workouts/**", "**/updated-workouts/**", "**/snapshots/**", "**/*.har", "**/*.js", "**/*.log"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hevy_mcp"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"README.md" = "hevy_mcp_docs/README.md"
+"docs" = "hevy_mcp_docs/docs"
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/tests", "/scripts", "/docs", "/README.md", "/LICENSE", "/pyproject.toml", "/uv.lock"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--disable-socket --allow-unix-socket"
+norecursedirs = ["scripts", ".refs", ".venv", "dist", "build"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [".refs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
